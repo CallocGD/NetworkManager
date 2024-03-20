@@ -51,7 +51,7 @@ Feel free to send me Pull requests for any of these if you want to implement the
 - pthreads (Luckily there's a windows version of this one)
 
 # Installation On Windows 
-- Unzip the `link.zip` file in the include/link folder be sure all the .lib fileds end up in include/link otherwise Cmake might complain at you (I added these because I know how difficult it is to compile these) and from there use cmake to configure and compile everything to networkmanager.lib which is meant to be used as a static library 
+- Unzip the `link.zip` file in the include/link folder be sure all the .lib fileds end up in include/link otherwise Cmake might complain at you (I added these because I know how difficult it is to compile these). From the main directory or making a build director you can use cmake to configure and compile everything to `networkmanager.lib` which is meant to be used as a static library 
 
 
 ## Examples 
