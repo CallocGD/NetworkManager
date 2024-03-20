@@ -1,4 +1,4 @@
-# networkManager
+# NetworkManager
 
 Inspired by Robtop's works and cocos2dx. This is A Simple C++ 
 Module/Library for handling Http Requests Async inside of an 
@@ -14,6 +14,9 @@ propperly so I reworte this and came up with a plan for a loop and then designed
 queue object to transport the objects I wanted between the main thread and the http 
 thread.
 
+The Http Requests get handled inside of 1 thread/deamon However you could theoretically 
+setup multiple networkmanagers by not using the global functions provided which are meant 
+for only handling one single state.
 
 
 # Features
@@ -46,6 +49,9 @@ Feel free to send me Pull requests for any of these if you want to implement the
 - Openssl (Optional but I recommend it when compiling libcurl and this project into your application
   Just know that from my own experience compiling openssl is a pain in the ass)
 - pthreads (Luckily there's a windows version of this one)
+
+# Installation On Windows 
+- Unzip the `link.zip` file in the include/link folder be sure all the .lib fileds end up in include/link otherwise Cmake might complain at you (I added these because I know how difficult it is to compile these) and from there use cmake to configure and compile everything to networkmanager.lib which is meant to be used as a static library 
 
 
 ## Examples 
@@ -82,12 +88,12 @@ void sendNetworkingTest(){
 }
 
 void shutdownUI(){
-    /* Dealloc our Manager */
+    /* Deallocate our Manager */
     networkManager::releaseState();
 }
 
 /* Some code and then your Eventloop ... */
-
+void mainloop(){
     while (!glfwWindowShouldClose(m_GLFWindow)){
         /* Handle keyboard calls and events */
         glfwPollEvents();
@@ -102,8 +108,9 @@ void shutdownUI(){
             networkManager->sharedState()->visit();
         }
         ImGui::End();
-        /* Render the rest of ui... */
+        /* Render the rest of your ui... */
     shutdownUI();
+}
 ```
 
 
